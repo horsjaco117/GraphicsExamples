@@ -16,6 +16,18 @@ Public Class GraphicExamplesForm
         Return _foreColor
     End Function
 
+
+    Sub DrawWithMouse(oldX As Integer, oldY As Integer, newX As Integer, newY As Integer)
+        Dim g As Graphics = Me.CreateGraphics
+        Dim pen As New Pen(ForeGroundColor)
+
+
+        'pen.Color = ForeGroundColor(Color.Lime)
+
+        g.DrawLine(pen, oldX, oldY, newX, newY)
+
+        g.Dispose()
+    End Sub
     Sub drawline()
         Dim g As Graphics = Me.CreateGraphics
         Dim pen As New Pen(Color.Black)
@@ -61,7 +73,7 @@ Public Class GraphicExamplesForm
         g.Dispose()
     End Sub
     'Event Handlers -----------------------------------------------------------------
-    Private Sub GraphicExamplesForm_Click(sender As Object, e As EventArgs) Handles Me.Click
+    Private Sub GraphicExamplesForm_Click(sender As Object, e As EventArgs) 'Handles Me.Click
         Me.Refresh()
         drawline()
         drawRectangle()
@@ -70,12 +82,25 @@ Public Class GraphicExamplesForm
     End Sub
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        Static oldX, oldY As Integer
+        'TO DO only draw when button is held down
         Me.Text = $"({e.X},{e.Y})"
+        DrawWithMouse(oldX, oldY, e.X, e.Y)
+        oldX = e.X
+        oldY = e.Y
     End Sub
 
     Private Sub ForegroundColorTopStripMenuItem_Click(sender As Object, e As EventArgs) Handles ForegroundColorTopStripMenuItem.Click
 
-        ColorDialog.ShowDialog()
-        ForeGroundColor(ColorDialog.Color)
+        Dim result As DialogResult = ColorDialog.ShowDialog()
+
+        If result.ToString = "OK" Then
+
+            ForeGroundColor(ColorDialog.Color)
+        Else
+            MsgBox(result.ToString)
+            MsgBox(ColorDialog.Color.ToString)
+
+        End If
     End Sub
 End Class

@@ -6,12 +6,21 @@ Option Explicit On
 
 
 Public Class GraphicExamplesForm
+    Function ForeGroundColor(Optional newColor As Color = Nothing) As Color
+        Static _foreColor As Color = Color.Black
+
+        If newColor <> Nothing Then
+            _foreColor = newColor
+        End If
+
+        Return _foreColor
+    End Function
 
     Sub drawline()
         Dim g As Graphics = Me.CreateGraphics
         Dim pen As New Pen(Color.Black)
 
-        'pen.Color = Color.PapayaWhip
+        pen.Color = ForeGroundColor(Color.Lime)
 
         g.DrawLine(pen, 50, 50, 100, 100)
 
@@ -43,7 +52,7 @@ Public Class GraphicExamplesForm
         Dim g As Graphics = Me.CreateGraphics
         Dim pen As New Pen(Color.Cornsilk)
         Dim drawfont As New Font("arial", 16)
-        Dim drawbrush As New SolidBrush(Color.Black)
+        Dim drawbrush As New SolidBrush(ForeGroundColor)
 
         'pen.Color = Color.PapayaWhip
 

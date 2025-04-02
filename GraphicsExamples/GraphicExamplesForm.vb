@@ -93,14 +93,14 @@ Public Class GraphicExamplesForm
             Case "Middle"
                 'TODO
         End Select
-        Me.Text = $"({e.X},{e.Y}) {e.Button.ToString}"
+        Me.Text = $"({e.X},{e.Y}) {e.Button.ToString} FG {ForeGroundColor.ToString}"
 
         ' DrawWithMouse(oldX, oldY, e.X, e.Y)
         oldX = e.X
         oldY = e.Y
     End Sub
 
-    Private Sub ForegroundColorTopStripMenuItem_Click(sender As Object, e As EventArgs) Handles ForegroundColorTopStripMenuItem.Click
+    Private Sub ChangeForegroundColor(sender As Object, e As EventArgs) Handles ForegroundColorContextMenuItem.Click
 
         Dim result As DialogResult = ColorDialog.ShowDialog()
 
@@ -114,5 +114,11 @@ Public Class GraphicExamplesForm
         End If
     End Sub
 
+    Private Sub MainContextMenuStrip_MouseClick(sender As Object, e As MouseEventArgs) Handles MainContextMenu.MouseClick
 
+    End Sub
+
+    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
+        Me.Refresh()
+    End Sub
 End Class

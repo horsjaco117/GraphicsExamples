@@ -4,6 +4,20 @@
 Option Strict On
 Option Explicit On
 
+'TODO
+' [ ] Add funcionality for all context menu items
+'   [ ] Background color
+'   [ ] pen width as drop down or text input with max width defined
+'   [ ] font
+' [ ] match functionality between context menu and top menu
+' [ ] add tool tip on picture box
+' [ ] plot sine wave
+' [ ] Add erase mode
+' [ ] Draw shape tool
+' [ ] add about form
+' [ ] add splash screen
+' [ ] 
+
 
 Public Class GraphicExamplesForm
     Function ForeGroundColor(Optional newColor As Color = Nothing) As Color
@@ -18,7 +32,7 @@ Public Class GraphicExamplesForm
 
 
     Sub DrawWithMouse(oldX As Integer, oldY As Integer, newX As Integer, newY As Integer)
-        Dim g As Graphics = Me.CreateGraphics
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(ForeGroundColor)
 
 
@@ -81,14 +95,14 @@ Public Class GraphicExamplesForm
     '    drawstring()
     'End Sub
 
-    Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove, Me.MouseDown
+    Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
         Static oldX, oldY As Integer
         'Only draw when button is held down
         Select Case e.Button.ToString
             Case "Left"
                 DrawWithMouse(oldX, oldY, e.X, e.Y)
             Case "Right"
-                'MsgBox("Yippe!!")
+                'MsgBox("Yippee!!")
                 'ignore and use context menu
             Case "Middle"
                 'TODO
@@ -119,6 +133,6 @@ Public Class GraphicExamplesForm
     End Sub
 
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
-        Me.Refresh()
+        DrawingPictureBox.Refresh()
     End Sub
 End Class

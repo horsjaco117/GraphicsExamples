@@ -20,7 +20,7 @@ Option Explicit On
 
 
 Public Class GraphicExamplesForm
-    Function ForeGroundColor(Optional newColor As Color = Nothing) As Color
+    Function ForegroundColor(Optional newColor As Color = Nothing) As Color
         Static _foreColor As Color = Color.Black
 
         If newColor <> Nothing Then
@@ -30,10 +30,32 @@ Public Class GraphicExamplesForm
         Return _foreColor
     End Function
 
+    Function BackgroundColor(Optional newColor As Color = Nothing) As Color
+        Static _backColor As Color = Color.White
+
+        If newColor <> Nothing Then
+            _backColor = newColor
+        End If
+
+        Return _backColor
+    End Function
+
+    Function PenWidth(Optional newWidth As Integer = -1) As Integer
+        Static _PenWidth As Integer = 10
+        'define valid range. Note widths > 1 looks weird, maybe draw rectangles
+        If newWidth > 100 Then
+            _PenWidth = 100
+        ElseIf newWidth > 0 Then 'define max pen width
+            _PenWidth = newWidth
+        End If
+
+        Return _PenWidth
+    End Function
+
 
     Sub DrawWithMouse(oldX As Integer, oldY As Integer, newX As Integer, newY As Integer)
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
-        Dim pen As New Pen(ForeGroundColor)
+        Dim pen As New Pen(ForegroundColor, PenWidth())
 
 
         'pen.Color = ForeGroundColor(Color.Lime)
@@ -128,11 +150,31 @@ Public Class GraphicExamplesForm
         End If
     End Sub
 
-    Private Sub MainContextMenuStrip_MouseClick(sender As Object, e As MouseEventArgs) Handles MainContextMenu.MouseClick
+    Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorContextMenuItem.Click, BackgroundColorToolStripMenuItem.Click
+
+        Dim result As DialogResult = ColorDialog.ShowDialog()
+
+        If result.ToString = "OK" Then
+
+            BackgroundColor(ColorDialog.Color)
+        Else
+            MsgBox(result.ToString)
+            MsgBox(ColorDialog.Color.ToString)
+
+        End If
+    End Sub
+
+    Private Sub MainContextMenuStrip_MouseClick(sender As Object, e As MouseEventArgs) Handles MainContextMenuStrip.MouseClick
 
     End Sub
 
     Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
-        DrawingPictureBox.Refresh()
+        DrawingPictureBox.BackColor = BackgroundColor()
+    End Sub
+
+
+
+    Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
+
     End Sub
 End Class

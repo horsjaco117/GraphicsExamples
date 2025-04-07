@@ -182,4 +182,9 @@ Public Class GraphicExamplesForm
         Me.Hide()
         AboutForm.Show()
     End Sub
+
+    Private Sub GraphicExamplesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.Hide()
+        SplashForm.Show()
+    End Sub
 End Class

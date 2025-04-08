@@ -64,58 +64,6 @@ Public Class GraphicExamplesForm
 
         g.Dispose()
     End Sub
-    'Sub drawline()
-    '    Dim g As Graphics = Me.CreateGraphics
-    '    Dim pen As New Pen(Color.Black)
-
-    '    'pen.Color = ForeGroundColor(Color.Lime)
-
-    '    g.DrawLine(pen, 50, 50, 100, 100)
-
-    '    g.Dispose()
-    'End Sub
-
-    'Sub drawRectangle()
-    '    Dim g As Graphics = Me.CreateGraphics
-    '    Dim pen As New Pen(Color.OrangeRed, 3)
-
-    '    'pen.Color = Color.PapayaWhip
-
-    '    g.DrawRectangle(pen, 150, 150, 300, 300)
-
-    '    g.Dispose()
-    'End Sub
-
-    'Sub drawcircle()
-    '    Dim g As Graphics = Me.CreateGraphics
-    '    Dim pen As New Pen(Color.Peru, 45)
-
-    '    'pen.Color = Color.PapayaWhip
-
-    '    g.DrawEllipse(pen, 160, 160, 290, 290)
-
-    '    g.Dispose()
-    'End Sub
-    'Sub drawstring()
-    '    Dim g As Graphics = Me.CreateGraphics
-    '    Dim pen As New Pen(Color.Cornsilk)
-    '    Dim drawfont As New Font("arial", 16)
-    '    Dim drawbrush As New SolidBrush(ForeGroundColor)
-
-    '    'pen.Color = Color.PapayaWhip
-
-    '    g.DrawString("Graphics!", drawfont, drawbrush, 200, 200)
-
-    '    g.Dispose()
-    'End Sub
-    'Event Handlers -----------------------------------------------------------------
-    'Private Sub GraphicExamplesForm_Click(sender As Object, e As EventArgs) 'Handles Me.Click
-    '    Me.Refresh()
-    '    drawline()
-    '    drawRectangle()
-    '    drawcircle()
-    '    drawstring()
-    'End Sub
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
         Static oldX, oldY As Integer
@@ -183,8 +131,9 @@ Public Class GraphicExamplesForm
         AboutForm.Show()
     End Sub
 
-    Private Sub GraphicExamplesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
-        Me.Hide()
+    Private Sub GraphicExamplesForm_activated(sender As Object, e As EventArgs) Handles Me.Activated
+
         SplashForm.Show()
+
     End Sub
 End Class

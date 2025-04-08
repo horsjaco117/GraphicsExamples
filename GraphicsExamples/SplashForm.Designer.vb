@@ -28,18 +28,22 @@ Partial Class SplashForm
         '
         'SplashTimer1
         '
-        Me.SplashTimer1.Interval = 10000
+        Me.SplashTimer1.Interval = 1000
         '
         'SplashForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BackgroundImage = Global.GraphicsExamples.My.Resources.Resources.Airbrush
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.DoubleBuffered = True
         Me.Name = "SplashForm"
         Me.Text = "Form2"
+        Me.TopMost = True
+        Me.TransparencyKey = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.ResumeLayout(False)
 
     End Sub

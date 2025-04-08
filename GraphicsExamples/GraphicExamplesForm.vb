@@ -136,4 +136,10 @@ Public Class GraphicExamplesForm
         SplashForm.Show()
 
     End Sub
+
+    Private Sub MainContextMenuStrip_Opening(sender As Object, e As System.ComponentModel.CancelEventArgs) Handles MainContextMenuStrip.Opening
+
+    End Sub
+
+
 End Class

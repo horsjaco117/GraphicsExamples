@@ -71,6 +71,7 @@ Public Class GraphicExamplesForm
         Dim ymax As Integer = 50
         Dim oldX, oldY, newY As Integer
         Dim yOffset As Integer = DrawingPictureBox.Height \ 2
+        Dim degreesPerPoint As Double = 360 \ DrawingPictureBox.Width
 
         ymax = yOffset
         ymax *= -1
@@ -79,8 +80,8 @@ Public Class GraphicExamplesForm
 
 
         'pen.Color = ForeGroundColor(Color.Lime)
-        For x = 0 To 360
-            newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+        For x = 0 To DrawingPictureBox.Width
+            newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + yOffset
             g.DrawLine(pen, oldX, oldY, x, newY)
             oldX = x
             oldY = newY
@@ -177,6 +178,7 @@ Public Class GraphicExamplesForm
     End Sub
 
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click
+        DrawingPictureBox.Refresh()
         DrawSinWave()
     End Sub
 End Class

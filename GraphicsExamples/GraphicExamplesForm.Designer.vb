@@ -52,9 +52,12 @@ Partial Class GraphicExamplesForm
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
+        Me.DrawWaveButton = New System.Windows.Forms.Button()
         Me.TopMenuStrip.SuspendLayout()
         Me.MainContextMenuStrip.SuspendLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ButtonGroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'TopMenuStrip
@@ -64,21 +67,21 @@ Partial Class GraphicExamplesForm
         Me.TopMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.TopMenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.TopMenuStrip.Name = "TopMenuStrip"
-        Me.TopMenuStrip.Size = New System.Drawing.Size(1091, 33)
+        Me.TopMenuStrip.Size = New System.Drawing.Size(956, 36)
         Me.TopMenuStrip.TabIndex = 0
         Me.TopMenuStrip.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 32)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ForegroundColorContextMenuItem, Me.BackgroundColorContextMenuItem, Me.WidthContextMenuItem, Me.FontContextMenuItem, Me.ClearContextMenuItem, Me.WidthToolStripMenuItem1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 29)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 32)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'ForegroundColorContextMenuItem
@@ -138,7 +141,7 @@ Partial Class GraphicExamplesForm
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 32)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
@@ -226,16 +229,38 @@ Partial Class GraphicExamplesForm
         Me.DrawingPictureBox.Cursor = System.Windows.Forms.Cursors.Cross
         Me.DrawingPictureBox.Location = New System.Drawing.Point(12, 36)
         Me.DrawingPictureBox.Name = "DrawingPictureBox"
-        Me.DrawingPictureBox.Size = New System.Drawing.Size(1067, 435)
+        Me.DrawingPictureBox.Size = New System.Drawing.Size(932, 535)
         Me.DrawingPictureBox.TabIndex = 2
         Me.DrawingPictureBox.TabStop = False
         Me.ToolTip1.SetToolTip(Me.DrawingPictureBox, "Right click for more options")
+        '
+        'ButtonGroupBox
+        '
+        Me.ButtonGroupBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonGroupBox.Controls.Add(Me.DrawWaveButton)
+        Me.ButtonGroupBox.Location = New System.Drawing.Point(12, 582)
+        Me.ButtonGroupBox.Name = "ButtonGroupBox"
+        Me.ButtonGroupBox.Size = New System.Drawing.Size(932, 183)
+        Me.ButtonGroupBox.TabIndex = 3
+        Me.ButtonGroupBox.TabStop = False
+        Me.ButtonGroupBox.Text = "GroupBox1"
+        '
+        'DrawWaveButton
+        '
+        Me.DrawWaveButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DrawWaveButton.Location = New System.Drawing.Point(725, 25)
+        Me.DrawWaveButton.Name = "DrawWaveButton"
+        Me.DrawWaveButton.Size = New System.Drawing.Size(201, 152)
+        Me.DrawWaveButton.TabIndex = 0
+        Me.DrawWaveButton.Text = "&Wave"
+        Me.DrawWaveButton.UseVisualStyleBackColor = True
         '
         'GraphicExamplesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1091, 677)
+        Me.ClientSize = New System.Drawing.Size(956, 777)
+        Me.Controls.Add(Me.ButtonGroupBox)
         Me.Controls.Add(Me.DrawingPictureBox)
         Me.Controls.Add(Me.TopMenuStrip)
         Me.MainMenuStrip = Me.TopMenuStrip
@@ -245,6 +270,7 @@ Partial Class GraphicExamplesForm
         Me.TopMenuStrip.PerformLayout()
         Me.MainContextMenuStrip.ResumeLayout(False)
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ButtonGroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -279,4 +305,6 @@ Partial Class GraphicExamplesForm
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents ToolTip2 As ToolTip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ButtonGroupBox As GroupBox
+    Friend WithEvents DrawWaveButton As Button
 End Class

@@ -15,7 +15,7 @@ Option Explicit On
 ' [ ] Add erase mode
 ' [ ] Draw shape tool
 ' [ ] add about form
-' [ ] add splash screen
+' [x] add splash screen
 ' [ ] 
 
 
@@ -61,6 +61,41 @@ Public Class GraphicExamplesForm
         'pen.Color = ForeGroundColor(Color.Lime)
 
         g.DrawLine(pen, oldX, oldY, newX, newY)
+
+        g.Dispose()
+    End Sub
+
+    Sub DrawSinWave()
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Lime)
+        Dim ymax As Integer = 50
+        Dim oldX, oldY, newY As Integer
+        Dim yOffset As Integer = DrawingPictureBox.Height \ 2
+
+        ymax = yOffset
+        ymax *= -1
+        oldY = yOffset
+
+
+
+        'pen.Color = ForeGroundColor(Color.Lime)
+        For x = 0 To 360
+            newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + DrawingPictureBox.Height \ 2
+            g.DrawLine(pen, oldX, oldY, x, newY)
+            oldX = x
+            oldY = newY
+            Select Case x
+                Case 90
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 180
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 270
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 360
+                    Console.WriteLine($"x={x} y={newY}")
+
+            End Select
+        Next
 
         g.Dispose()
     End Sub
@@ -141,5 +176,7 @@ Public Class GraphicExamplesForm
 
     End Sub
 
-
+    Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click
+        DrawSinWave()
+    End Sub
 End Class

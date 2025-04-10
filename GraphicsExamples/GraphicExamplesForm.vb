@@ -41,7 +41,7 @@ Public Class GraphicExamplesForm
     End Function
 
     Function PenWidth(Optional newWidth As Integer = -1) As Integer
-        Static _PenWidth As Integer = 10
+        Static _PenWidth As Integer = 1
         'define valid range. Note widths > 1 looks weird, maybe draw rectangles
         If newWidth > 100 Then
             _PenWidth = 100
@@ -102,7 +102,9 @@ Public Class GraphicExamplesForm
     End Sub
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
-        Static oldX, oldY As Integer
+        Static oldX, oldY, lastVerticalLineX As Integer
+        Dim lastColor As Color
+        Dim lastWidth As Integer
         'Only draw when button is held down
         Select Case e.Button.ToString
             Case "Left"
@@ -116,7 +118,20 @@ Public Class GraphicExamplesForm
                 '
                 ''DrawWithMouse(DrawingPictureBox.Width \ 2, 0, DrawingPictureBox.Width \ 2, DrawingPictureBox.Height)
                 'draw a line top to bottom on the current mouse x location
-                DrawWithMouse(e.X, 0, e.X, DrawingPictureBox.Height)
+                lastColor = ForegroundColor() 'save user color
+                lastWidth = PenWidth() 'save user pen width
+                PenWidth(3) ' set wider pen width to eliminate ghosting
+                ForegroundColor(BackgroundColor()) 'set foreground color to background color
+                DrawWithMouse(lastVerticalLineX, 0, lastVerticalLineX, DrawingPictureBox.Height) ' erase last line
+
+                PenWidth(1) 'set width to 1 pixel
+                ForegroundColor(lastColor) 'revert foreground color to user defined
+                DrawWithMouse(e.X, 0, e.X, DrawingPictureBox.Height) 'draw vertical line
+                lastVerticalLineX = e.X ' store x position of last line
+                PenWidth(lastWidth) 'revert pen width to user defined
+
+
+
         End Select
         Me.Text = $"({e.X},{e.Y}) {e.Button.ToString} FG {ForeGroundColor.ToString}"
 

@@ -1,8 +1,10 @@
 ﻿'Graphics Examples
 'Spring 2025
-
 Option Strict On
 Option Explicit On
+
+Imports System.Threading.Thread
+
 
 'TODO
 ' [ ] Add funcionality for all context menu items
@@ -200,5 +202,22 @@ Public Class GraphicExamplesForm
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click
         DrawingPictureBox.Refresh()
         DrawSinWave()
+    End Sub
+
+    Private Sub ClearContextMenuItem_Click(sender As Object, e As EventArgs) Handles ClearContextMenuItem.Click
+        Dim fudge As Integer = 20
+        Try
+            My.Computer.Audio.Play(My.Resources.shaker, AudioPlayMode.Background)
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        For i = 1 To 10
+            Me.Top += fudge
+            Me.Left += fudge
+            Sleep(100)
+            fudge *= -1
+        Next
+        DrawingPictureBox.Refresh()
     End Sub
 End Class

@@ -1,10 +1,14 @@
-﻿'Graphics Examples
+﻿'Jacob Horsley
+'RCET 0265
 'Spring 2025
+'URL:
+
 Option Strict On
 Option Explicit On
 
+Imports System.Media
 Imports System.Threading.Thread
-
+Imports System.Runtime.CompilerServices
 
 'TODO
 ' [ ] Add funcionality for all context menu items
@@ -43,15 +47,15 @@ Public Class GraphicExamplesForm
     End Function
 
     Function PenWidth(Optional newWidth As Integer = -1) As Integer
-        Static _PenWidth As Integer = 1
+        Static _penWidth As Integer = 1
         'define valid range. Note widths > 1 looks weird, maybe draw rectangles
         If newWidth > 100 Then
-            _PenWidth = 100
+            _penWidth = 100
         ElseIf newWidth > 0 Then 'define max pen width
-            _PenWidth = newWidth
+            _penWidth = newWidth
         End If
 
-        Return _PenWidth
+        Return _penWidth
     End Function
 
 
@@ -76,8 +80,8 @@ Public Class GraphicExamplesForm
         Dim degreesPerPoint As Double = 360 \ DrawingPictureBox.Width
 
         ymax = yOffset
-        ymax *= -1
         oldY = yOffset
+        ymax *= -1
 
 
 
@@ -87,6 +91,8 @@ Public Class GraphicExamplesForm
             g.DrawLine(pen, oldX, oldY, x, newY)
             oldX = x
             oldY = newY
+
+
             Select Case x
                 Case 90
                     Console.WriteLine($"x={x} y={newY}")
@@ -102,6 +108,8 @@ Public Class GraphicExamplesForm
 
         g.Dispose()
     End Sub
+
+    'Event Handlers-----------------------------------------
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
         Static oldX, oldY, lastVerticalLineX As Integer
@@ -131,11 +139,9 @@ Public Class GraphicExamplesForm
                 DrawWithMouse(e.X, 0, e.X, DrawingPictureBox.Height) 'draw vertical line
                 lastVerticalLineX = e.X ' store x position of last line
                 PenWidth(lastWidth) 'revert pen width to user defined
-
-
-
         End Select
-        Me.Text = $"({e.X},{e.Y}) {e.Button.ToString} FG {ForeGroundColor.ToString}"
+
+        '   Me.Text = $"({e.X},{e.Y}) {e.Button.ToString} FG {ForeGroundColor.ToString}"
 
         ' DrawWithMouse(oldX, oldY, e.X, e.Y)
         oldX = e.X
@@ -149,49 +155,39 @@ Public Class GraphicExamplesForm
         If result.ToString = "OK" Then
 
             ForeGroundColor(ColorDialog.Color)
-        Else
-            MsgBox(result.ToString)
-            MsgBox(ColorDialog.Color.ToString)
+            'Else
+            '    MsgBox(result.ToString)
+            '    MsgBox(ColorDialog.Color.ToString)
 
         End If
     End Sub
 
-    Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorContextMenuItem.Click, BackgroundColorToolStripMenuItem.Click
+    Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorContextMenuItem.Click, BackgroundColorToolStripMenuItem.Click, BackgroundColorToolStripMenuItem.Click
+
 
         Dim result As DialogResult = ColorDialog.ShowDialog()
 
         If result.ToString = "OK" Then
 
             BackgroundColor(ColorDialog.Color)
-        Else
-            MsgBox(result.ToString)
-            MsgBox(ColorDialog.Color.ToString)
+            'Else
+            '    MsgBox(result.ToString)
+            '    MsgBox(ColorDialog.Color.ToString)
 
         End If
     End Sub
-
-    Private Sub MainContextMenuStrip_MouseClick(sender As Object, e As MouseEventArgs) Handles MainContextMenuStrip.MouseClick
-
-    End Sub
-
-    Private Sub ClearToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClearToolStripMenuItem.Click
-        DrawingPictureBox.BackColor = BackgroundColor()
-    End Sub
-
-
-
-    Private Sub BackgroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BackgroundColorToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         Me.Hide()
         AboutForm.Show()
     End Sub
 
     Private Sub GraphicExamplesForm_activated(sender As Object, e As EventArgs) Handles Me.Activated
-
-        SplashForm.Show()
+        Static isStartUp As Boolean = True
+        If isStartUp Then
+            SplashForm.Show()
+            isStartUp = False
+        End If
+        'SplashForm.Show()
 
     End Sub
 

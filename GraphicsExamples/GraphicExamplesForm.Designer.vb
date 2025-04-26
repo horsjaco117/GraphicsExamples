@@ -41,8 +41,9 @@ Partial Class GraphicExamplesForm
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.DrawWaveButton = New System.Windows.Forms.Button()
-        Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.ClearButton = New System.Windows.Forms.Button()
+        Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
+        Me.ColorButton = New System.Windows.Forms.Button()
         Me.TopMenuStrip.SuspendLayout()
         Me.MainContextMenuStrip.SuspendLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,21 +87,21 @@ Partial Class GraphicExamplesForm
         'ForegroundColorContextMenuItem
         '
         Me.ForegroundColorContextMenuItem.Name = "ForegroundColorContextMenuItem"
-        Me.ForegroundColorContextMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.ForegroundColorContextMenuItem.Size = New System.Drawing.Size(256, 34)
         Me.ForegroundColorContextMenuItem.Text = "Foreground &Color"
         Me.ForegroundColorContextMenuItem.ToolTipText = "Changes color of the drawing pen"
         '
         'ClearContextMenuItem
         '
         Me.ClearContextMenuItem.Name = "ClearContextMenuItem"
-        Me.ClearContextMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.ClearContextMenuItem.Size = New System.Drawing.Size(256, 34)
         Me.ClearContextMenuItem.Text = "Clear"
         Me.ClearContextMenuItem.ToolTipText = "Clears what has been drawn on the screen" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'DrawWaveformsToolStripMenuItem
         '
         Me.DrawWaveformsToolStripMenuItem.Name = "DrawWaveformsToolStripMenuItem"
-        Me.DrawWaveformsToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
+        Me.DrawWaveformsToolStripMenuItem.Size = New System.Drawing.Size(256, 34)
         Me.DrawWaveformsToolStripMenuItem.Text = "Draw &waveforms"
         Me.DrawWaveformsToolStripMenuItem.ToolTipText = "Draws a sin, cos, and tan lines on the screen"
         '
@@ -177,18 +178,6 @@ Partial Class GraphicExamplesForm
         Me.ToolTip1.SetToolTip(Me.DrawWaveButton, "Draws various waves on the screen." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Shortcut Button: Enter" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.DrawWaveButton.UseVisualStyleBackColor = True
         '
-        'ButtonGroupBox
-        '
-        Me.ButtonGroupBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ButtonGroupBox.Controls.Add(Me.ClearButton)
-        Me.ButtonGroupBox.Controls.Add(Me.DrawWaveButton)
-        Me.ButtonGroupBox.Location = New System.Drawing.Point(12, 582)
-        Me.ButtonGroupBox.Name = "ButtonGroupBox"
-        Me.ButtonGroupBox.Size = New System.Drawing.Size(932, 183)
-        Me.ButtonGroupBox.TabIndex = 3
-        Me.ButtonGroupBox.TabStop = False
-        Me.ButtonGroupBox.Text = "GroupBox1"
-        '
         'ClearButton
         '
         Me.ClearButton.Location = New System.Drawing.Point(512, 25)
@@ -198,6 +187,29 @@ Partial Class GraphicExamplesForm
         Me.ClearButton.Text = "Clear"
         Me.ToolTip1.SetToolTip(Me.ClearButton, "Clears the form. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Shortcut Button: ESC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ClearButton.UseVisualStyleBackColor = True
+        '
+        'ButtonGroupBox
+        '
+        Me.ButtonGroupBox.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ButtonGroupBox.Controls.Add(Me.ColorButton)
+        Me.ButtonGroupBox.Controls.Add(Me.ClearButton)
+        Me.ButtonGroupBox.Controls.Add(Me.DrawWaveButton)
+        Me.ButtonGroupBox.Location = New System.Drawing.Point(12, 582)
+        Me.ButtonGroupBox.Name = "ButtonGroupBox"
+        Me.ButtonGroupBox.Size = New System.Drawing.Size(932, 183)
+        Me.ButtonGroupBox.TabIndex = 3
+        Me.ButtonGroupBox.TabStop = False
+        Me.ButtonGroupBox.Text = "GroupBox1"
+        '
+        'ColorButton
+        '
+        Me.ColorButton.Location = New System.Drawing.Point(336, 25)
+        Me.ColorButton.Name = "ColorButton"
+        Me.ColorButton.Size = New System.Drawing.Size(170, 152)
+        Me.ColorButton.TabIndex = 2
+        Me.ColorButton.Text = "Color"
+        Me.ToolTip1.SetToolTip(Me.ColorButton, "Choose your color!")
+        Me.ColorButton.UseVisualStyleBackColor = True
         '
         'GraphicExamplesForm
         '
@@ -240,4 +252,5 @@ Partial Class GraphicExamplesForm
     Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents DrawWaveformsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearButton As Button
+    Friend WithEvents ColorButton As Button
 End Class

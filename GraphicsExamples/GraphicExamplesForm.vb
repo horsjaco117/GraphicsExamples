@@ -62,8 +62,6 @@ Public Class GraphicExamplesForm
     Sub DrawWithMouse(oldX As Integer, oldY As Integer, newX As Integer, newY As Integer)
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(ForegroundColor, PenWidth())
-
-
         'pen.Color = ForeGroundColor(Color.Lime)
 
         g.DrawLine(pen, oldX, oldY, newX, newY)
@@ -83,8 +81,6 @@ Public Class GraphicExamplesForm
         oldY = yOffset
         ymax *= -1
 
-
-
         'pen.Color = ForeGroundColor(Color.Lime)
         For x = 0 To DrawingPictureBox.Width
             newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + yOffset
@@ -92,7 +88,6 @@ Public Class GraphicExamplesForm
             g.DrawLine(pen, oldX, oldY, x, newY)
             oldX = x
             oldY = newY
-
 
             Select Case x
                 Case 90
@@ -106,7 +101,6 @@ Public Class GraphicExamplesForm
 
             End Select
         Next
-
 
         g.Dispose()
     End Sub
@@ -145,6 +139,35 @@ Public Class GraphicExamplesForm
         Next
 
     End Sub
+
+    Sub DrawTanWave()
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Blue)
+        Dim ymax As Double = DrawingPictureBox.Height \ 8
+        Dim oldX, newY As Integer
+        Dim yOffset As Integer = DrawingPictureBox.Height \ 2
+        Dim degreesPerPoint As Double = 360 / DrawingPictureBox.Width
+        Dim oldy As Integer = yOffset
+        ymax *= -1
+
+        For x = 0 To DrawingPictureBox.Width
+            If Math.Abs((x * degreesPerPoint) Mod 90) <> 0 Then
+                ' Dynamically adjust the tangent calculation based on width
+                newY = CInt(yOffset + (ymax * Math.Tan((Math.PI / 180) * (x * degreesPerPoint))))
+                g.DrawLine(pen, oldX, oldy, x, newY)
+                oldX = x
+                oldy = newY
+            End If
+
+            Select Case x
+                Case 90, 180, 270, 360
+                    Console.WriteLine($"x={x} y={newY}")
+            End Select
+        Next
+
+        g.Dispose()
+    End Sub
+
     'Event Handlers-----------------------------------------
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
@@ -156,26 +179,27 @@ Public Class GraphicExamplesForm
             Case "Left"
                 DrawWithMouse(oldX, oldY, e.X, e.Y)
             Case "Right"
-                'MsgBox("Yippee!!")
 
                 'ignore and use context menu
             Case "Middle"
-                'TODO
-                '
-                ''DrawWithMouse(DrawingPictureBox.Width \ 2, 0, DrawingPictureBox.Width \ 2, DrawingPictureBox.Height)
-                'draw a line top to bottom on the current mouse x location
-                lastColor = ForegroundColor() 'save user color
-                lastWidth = PenWidth() 'save user pen width
-                PenWidth(3) ' set wider pen width to eliminate ghosting
-                ForegroundColor(BackgroundColor()) 'set foreground color to background color
-                DrawWithMouse(lastVerticalLineX, 0, lastVerticalLineX, DrawingPictureBox.Height) ' erase last line
-
-                PenWidth(1) 'set width to 1 pixel
-                ForegroundColor(lastColor) 'revert foreground color to user defined
-                DrawWithMouse(e.X, 0, e.X, DrawingPictureBox.Height) 'draw vertical line
-                lastVerticalLineX = e.X ' store x position of last line
-                PenWidth(lastWidth) 'revert pen width to user defined
+                'MsgBox("Yippee!!")
+                ColorButton.PerformClick()
         End Select
+        'TODO
+        '
+        ''DrawWithMouse(DrawingPictureBox.Width \ 2, 0, DrawingPictureBox.Width \ 2, DrawingPictureBox.Height)
+        'draw a line top to bottom on the current mouse x location
+        'lastColor = ForegroundColor() 'save user color
+        'lastWidth = PenWidth() 'save user pen width
+        'PenWidth(3) ' set wider pen width to eliminate ghosting
+        'ForegroundColor(BackgroundColor()) 'set foreground color to background color
+        'DrawWithMouse(lastVerticalLineX, 0, lastVerticalLineX, DrawingPictureBox.Height) ' erase last line
+
+        'PenWidth(1) 'set width to 1 pixel
+        'ForegroundColor(lastColor) 'revert foreground color to user defined
+        'DrawWithMouse(e.X, 0, e.X, DrawingPictureBox.Height) 'draw vertical line
+        'lastVerticalLineX = e.X ' store x position of last line
+        'PenWidth(lastWidth) 'revert pen width to user defined
 
         '   Me.Text = $"({e.X},{e.Y}) {e.Button.ToString} FG {ForeGroundColor.ToString}"
 
@@ -184,7 +208,7 @@ Public Class GraphicExamplesForm
         oldY = e.Y
     End Sub
 
-    Private Sub ChangeForegroundColor(sender As Object, e As EventArgs) Handles ForegroundColorContextMenuItem.Click, ForegroundColorToolStripMenuItem.Click
+    Private Sub ChangeForegroundColor(sender As Object, e As EventArgs) Handles ForegroundColorContextMenuItem.Click, ForegroundColorToolStripMenuItem.Click, ColorButton.Click
 
         Dim result As DialogResult = ColorDialog.ShowDialog()
 
@@ -233,8 +257,9 @@ Public Class GraphicExamplesForm
 
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click, DrawWaveformsToolStripMenuItem.Click
         DrawingPictureBox.Refresh()
-        DrawSinWave()
-        drawCosWave()
+        ' DrawSinWave()
+        'drawCosWave()
+        DrawTanWave()
     End Sub
 
 
@@ -271,5 +296,11 @@ Public Class GraphicExamplesForm
 
     Private Sub GraphicExamplesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
         Me.CancelButton = Me.ClearButton
+    End Sub
+
+    Private Sub GraphicExamplesForm_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        If e.Button = MouseButtons.Middle Then
+            ForegroundColor()
+        End If
     End Sub
 End Class

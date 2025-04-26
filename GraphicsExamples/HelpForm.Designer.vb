@@ -22,17 +22,20 @@ Partial Class HelpForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.InfoLabel = New System.Windows.Forms.Label()
         Me.ReturnButton = New System.Windows.Forms.Button()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.SuspendLayout()
         '
         'InfoLabel
         '
-        Me.InfoLabel.Location = New System.Drawing.Point(37, 20)
+        Me.InfoLabel.Location = New System.Drawing.Point(37, 37)
         Me.InfoLabel.Name = "InfoLabel"
         Me.InfoLabel.Size = New System.Drawing.Size(605, 328)
         Me.InfoLabel.TabIndex = 0
         Me.InfoLabel.Text = "Jacob Horsley" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "RCET 0265" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Etch a Sketch" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Spring 2025" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.ToolTip1.SetToolTip(Me.InfoLabel, "Programmer information")
         '
         'ReturnButton
         '
@@ -41,6 +44,7 @@ Partial Class HelpForm
         Me.ReturnButton.Size = New System.Drawing.Size(162, 113)
         Me.ReturnButton.TabIndex = 1
         Me.ReturnButton.Text = "Return"
+        Me.ToolTip1.SetToolTip(Me.ReturnButton, "Returns back to Main drawing page")
         Me.ReturnButton.UseVisualStyleBackColor = True
         '
         'HelpForm
@@ -58,4 +62,5 @@ Partial Class HelpForm
 
     Friend WithEvents InfoLabel As Label
     Friend WithEvents ReturnButton As Button
+    Friend WithEvents ToolTip1 As ToolTip
 End Class

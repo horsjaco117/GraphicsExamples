@@ -5,5 +5,6 @@
 
     Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
         GraphicExamplesForm.Show()
+        Me.Close()
     End Sub
 End Class

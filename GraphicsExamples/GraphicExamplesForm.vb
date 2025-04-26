@@ -212,7 +212,7 @@ Public Class GraphicExamplesForm
 
     '    End If
     'End Sub
-    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
+    Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click, AboutToolStripMenuItem1.Click
         Me.Hide()
         HelpForm.Show()
     End Sub
@@ -231,14 +231,17 @@ Public Class GraphicExamplesForm
 
     End Sub
 
-    Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click
+    Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click, DrawWaveformsToolStripMenuItem.Click
         DrawingPictureBox.Refresh()
         DrawSinWave()
         drawCosWave()
     End Sub
 
-    Private Sub ClearContextMenuItem_Click(sender As Object, e As EventArgs) Handles ClearContextMenuItem.Click
+
+
+    Private Sub ClearContextMenuItem_Click(sender As Object, e As EventArgs) Handles ClearContextMenuItem.Click, ClearToolStripMenuItem.Click, ClearButton.Click
         Dim fudge As Integer = 20
+
         Try
             My.Computer.Audio.Play(My.Resources.shaker, AudioPlayMode.Background)
         Catch ex As Exception
@@ -264,5 +267,9 @@ Public Class GraphicExamplesForm
 
     Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click, ExitToolStripMenuItem.Click
         Me.Close()
+    End Sub
+
+    Private Sub GraphicExamplesForm_Load(sender As Object, e As EventArgs) Handles Me.Load
+        Me.CancelButton = Me.ClearButton
     End Sub
 End Class

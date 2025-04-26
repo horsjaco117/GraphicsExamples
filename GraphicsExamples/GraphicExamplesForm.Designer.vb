@@ -40,19 +40,14 @@ Partial Class GraphicExamplesForm
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MainContextMenuStrip = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ForegroundColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BackgroundColorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripComboBox1 = New System.Windows.Forms.ToolStripComboBox()
-        Me.FontToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClearToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WidthToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PickToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WidthPickContextMenuItemComboBox = New System.Windows.Forms.ToolStripComboBox()
-        Me.CustomToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.WidthPickContextMenuItemText = New System.Windows.Forms.ToolStripTextBox()
-        Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
+        Me.AboutToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.DrawWaveButton = New System.Windows.Forms.Button()
+        Me.ExitToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.TopMenuStrip.SuspendLayout()
         Me.MainContextMenuStrip.SuspendLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,34 +67,35 @@ Partial Class GraphicExamplesForm
         '
         'FileToolStripMenuItem
         '
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExitToolStripMenuItem1})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 32)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(54, 29)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ForegroundColorContextMenuItem, Me.BackgroundColorContextMenuItem, Me.WidthContextMenuItem, Me.FontContextMenuItem, Me.ClearContextMenuItem, Me.WidthToolStripMenuItem1})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 32)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(58, 29)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'ForegroundColorContextMenuItem
         '
         Me.ForegroundColorContextMenuItem.Name = "ForegroundColorContextMenuItem"
-        Me.ForegroundColorContextMenuItem.Size = New System.Drawing.Size(257, 34)
+        Me.ForegroundColorContextMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.ForegroundColorContextMenuItem.Text = "Foreground &Color"
         '
         'BackgroundColorContextMenuItem
         '
         Me.BackgroundColorContextMenuItem.Name = "BackgroundColorContextMenuItem"
-        Me.BackgroundColorContextMenuItem.Size = New System.Drawing.Size(257, 34)
+        Me.BackgroundColorContextMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.BackgroundColorContextMenuItem.Text = "Background Color"
         '
         'WidthContextMenuItem
         '
         Me.WidthContextMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox2, Me.ToolStripSeparator1, Me.ToolStripMenuItem1})
         Me.WidthContextMenuItem.Name = "WidthContextMenuItem"
-        Me.WidthContextMenuItem.Size = New System.Drawing.Size(257, 34)
+        Me.WidthContextMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.WidthContextMenuItem.Text = "Width"
         '
         'ToolStripComboBox2
@@ -121,104 +117,65 @@ Partial Class GraphicExamplesForm
         'FontContextMenuItem
         '
         Me.FontContextMenuItem.Name = "FontContextMenuItem"
-        Me.FontContextMenuItem.Size = New System.Drawing.Size(257, 34)
+        Me.FontContextMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.FontContextMenuItem.Text = "Font"
         '
         'ClearContextMenuItem
         '
         Me.ClearContextMenuItem.Name = "ClearContextMenuItem"
-        Me.ClearContextMenuItem.Size = New System.Drawing.Size(257, 34)
+        Me.ClearContextMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.ClearContextMenuItem.Text = "Clear"
         '
         'WidthToolStripMenuItem1
         '
         Me.WidthToolStripMenuItem1.Name = "WidthToolStripMenuItem1"
-        Me.WidthToolStripMenuItem1.Size = New System.Drawing.Size(257, 34)
+        Me.WidthToolStripMenuItem1.Size = New System.Drawing.Size(270, 34)
         Me.WidthToolStripMenuItem1.Text = "Width"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 32)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(65, 29)
         Me.HelpToolStripMenuItem.Text = "&Help"
         '
         'AboutToolStripMenuItem
         '
         Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(164, 34)
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(270, 34)
         Me.AboutToolStripMenuItem.Text = "About"
         '
         'MainContextMenuStrip
         '
         Me.MainContextMenuStrip.AllowDrop = True
         Me.MainContextMenuStrip.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.MainContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ForegroundColorToolStripMenuItem, Me.BackgroundColorToolStripMenuItem, Me.FontToolStripMenuItem, Me.ClearToolStripMenuItem, Me.WidthToolStripMenuItem})
+        Me.MainContextMenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ForegroundColorToolStripMenuItem, Me.ClearToolStripMenuItem, Me.AboutToolStripMenuItem1, Me.ExitToolStripMenuItem})
         Me.MainContextMenuStrip.Name = "MainContextMenuStrip"
-        Me.MainContextMenuStrip.Size = New System.Drawing.Size(228, 164)
+        Me.MainContextMenuStrip.Size = New System.Drawing.Size(179, 132)
         '
         'ForegroundColorToolStripMenuItem
         '
         Me.ForegroundColorToolStripMenuItem.Name = "ForegroundColorToolStripMenuItem"
-        Me.ForegroundColorToolStripMenuItem.Size = New System.Drawing.Size(227, 32)
-        Me.ForegroundColorToolStripMenuItem.Text = "Foreground Color"
-        '
-        'BackgroundColorToolStripMenuItem
-        '
-        Me.BackgroundColorToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripComboBox1})
-        Me.BackgroundColorToolStripMenuItem.Name = "BackgroundColorToolStripMenuItem"
-        Me.BackgroundColorToolStripMenuItem.Size = New System.Drawing.Size(227, 32)
-        Me.BackgroundColorToolStripMenuItem.Text = "Background Color"
-        '
-        'ToolStripComboBox1
-        '
-        Me.ToolStripComboBox1.Name = "ToolStripComboBox1"
-        Me.ToolStripComboBox1.Size = New System.Drawing.Size(121, 33)
-        '
-        'FontToolStripMenuItem
-        '
-        Me.FontToolStripMenuItem.Name = "FontToolStripMenuItem"
-        Me.FontToolStripMenuItem.Size = New System.Drawing.Size(227, 32)
-        Me.FontToolStripMenuItem.Text = "Font"
+        Me.ForegroundColorToolStripMenuItem.Size = New System.Drawing.Size(178, 32)
+        Me.ForegroundColorToolStripMenuItem.Text = "Select Color"
         '
         'ClearToolStripMenuItem
         '
         Me.ClearToolStripMenuItem.Name = "ClearToolStripMenuItem"
-        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(227, 32)
+        Me.ClearToolStripMenuItem.Size = New System.Drawing.Size(178, 32)
         Me.ClearToolStripMenuItem.Text = "Clear"
         '
-        'WidthToolStripMenuItem
+        'AboutToolStripMenuItem1
         '
-        Me.WidthToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PickToolStripMenuItem, Me.CustomToolStripMenuItem})
-        Me.WidthToolStripMenuItem.Name = "WidthToolStripMenuItem"
-        Me.WidthToolStripMenuItem.Size = New System.Drawing.Size(227, 32)
-        Me.WidthToolStripMenuItem.Text = "Width"
+        Me.AboutToolStripMenuItem1.Name = "AboutToolStripMenuItem1"
+        Me.AboutToolStripMenuItem1.Size = New System.Drawing.Size(178, 32)
+        Me.AboutToolStripMenuItem1.Text = "About"
         '
-        'PickToolStripMenuItem
+        'ExitToolStripMenuItem
         '
-        Me.PickToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WidthPickContextMenuItemComboBox})
-        Me.PickToolStripMenuItem.Name = "PickToolStripMenuItem"
-        Me.PickToolStripMenuItem.Size = New System.Drawing.Size(176, 34)
-        Me.PickToolStripMenuItem.Text = "Pick "
-        '
-        'WidthPickContextMenuItemComboBox
-        '
-        Me.WidthPickContextMenuItemComboBox.Name = "WidthPickContextMenuItemComboBox"
-        Me.WidthPickContextMenuItemComboBox.Size = New System.Drawing.Size(121, 33)
-        '
-        'CustomToolStripMenuItem
-        '
-        Me.CustomToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.WidthPickContextMenuItemText})
-        Me.CustomToolStripMenuItem.Name = "CustomToolStripMenuItem"
-        Me.CustomToolStripMenuItem.Size = New System.Drawing.Size(176, 34)
-        Me.CustomToolStripMenuItem.Text = "Custom"
-        '
-        'WidthPickContextMenuItemText
-        '
-        Me.WidthPickContextMenuItemText.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.WidthPickContextMenuItemText.Name = "WidthPickContextMenuItemText"
-        Me.WidthPickContextMenuItemText.Size = New System.Drawing.Size(100, 31)
-        Me.WidthPickContextMenuItemText.Text = "Pick"
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(178, 32)
+        Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'DrawingPictureBox
         '
@@ -256,6 +213,12 @@ Partial Class GraphicExamplesForm
         Me.DrawWaveButton.Text = "&Wave"
         Me.DrawWaveButton.UseVisualStyleBackColor = True
         '
+        'ExitToolStripMenuItem1
+        '
+        Me.ExitToolStripMenuItem1.Name = "ExitToolStripMenuItem1"
+        Me.ExitToolStripMenuItem1.Size = New System.Drawing.Size(270, 34)
+        Me.ExitToolStripMenuItem1.Text = "Exit"
+        '
         'GraphicExamplesForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -289,22 +252,17 @@ Partial Class GraphicExamplesForm
     Friend WithEvents ClearContextMenuItem As ToolStripMenuItem
     Friend WithEvents MainContextMenuStrip As ContextMenuStrip
     Friend WithEvents ForegroundColorToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BackgroundColorToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FontToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClearToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DrawingPictureBox As PictureBox
-    Friend WithEvents ToolStripComboBox1 As ToolStripComboBox
     Friend WithEvents ToolStripComboBox2 As ToolStripComboBox
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents WidthToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents WidthToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PickToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents WidthPickContextMenuItemComboBox As ToolStripComboBox
-    Friend WithEvents CustomToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents WidthPickContextMenuItemText As ToolStripTextBox
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents AboutToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ButtonGroupBox As GroupBox
     Friend WithEvents DrawWaveButton As Button
+    Friend WithEvents AboutToolStripMenuItem1 As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem1 As ToolStripMenuItem
 End Class

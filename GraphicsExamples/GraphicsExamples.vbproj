@@ -73,10 +73,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutForm.Designer.vb">
-      <DependentUpon>AboutForm.vb</DependentUpon>
+    <Compile Include="About From.vb" />
+    <Compile Include="HelpForm.Designer.vb">
+      <DependentUpon>HelpForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="AboutForm.vb">
+    <Compile Include="HelpForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SplashForm.Designer.vb">
@@ -122,11 +123,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AboutForm.resx">
-      <DependentUpon>AboutForm.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GraphicExamplesForm.resx">
       <DependentUpon>GraphicExamplesForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpForm.resx">
+      <DependentUpon>HelpForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>

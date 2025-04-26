@@ -75,10 +75,10 @@ Public Class GraphicExamplesForm
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Lime)
         Dim ymax As Integer = 50
-        Dim oldX, oldY, newY As Integer
+        Dim oldX, newY As Integer
         Dim yOffset As Integer = DrawingPictureBox.Height \ 2
         Dim degreesPerPoint As Double = 360 \ DrawingPictureBox.Width
-
+        Dim oldy As Integer = DrawingPictureBox.Height \ 2
         ymax = yOffset
         oldY = yOffset
         ymax *= -1
@@ -88,6 +88,7 @@ Public Class GraphicExamplesForm
         'pen.Color = ForeGroundColor(Color.Lime)
         For x = 0 To DrawingPictureBox.Width
             newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + yOffset
+
             g.DrawLine(pen, oldX, oldY, x, newY)
             oldX = x
             oldY = newY
@@ -106,9 +107,44 @@ Public Class GraphicExamplesForm
             End Select
         Next
 
+
         g.Dispose()
     End Sub
 
+    Sub drawCosWave()
+
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Red)
+        Dim ymax As Integer = DrawingPictureBox.Height \ 2
+        Dim oldX, newY As Integer
+        Dim yOffset As Integer = DrawingPictureBox.Height \ 2
+        Dim degreesPerPoint As Double = 360 \ DrawingPictureBox.Width
+        Dim oldy As Integer = DrawingPictureBox.Height \ 2
+        ymax = yOffset
+        oldy = yOffset
+        ymax *= -1
+        For x = 0 To DrawingPictureBox.Width
+            newY = CInt(ymax * Math.Cos((Math.PI / 180) * (x * 1))) + yOffset
+            ' newY += DrawingPictureBox.Height \ 4
+            g.DrawLine(Pen, oldX, oldY, x, newY)
+            oldX = x
+            oldY = newY
+
+
+            Select Case x
+                Case 90
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 180
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 270
+                    Console.WriteLine($"x={x} y={newY}")
+                Case 360
+                    Console.WriteLine($"x={x} y={newY}")
+
+            End Select
+        Next
+
+    End Sub
     'Event Handlers-----------------------------------------
 
     Private Sub GraphicExamplesForm_MouseMove(sender As Object, e As MouseEventArgs) Handles DrawingPictureBox.MouseMove, DrawingPictureBox.MouseDown
@@ -148,13 +184,13 @@ Public Class GraphicExamplesForm
         oldY = e.Y
     End Sub
 
-    Private Sub ChangeForegroundColor(sender As Object, e As EventArgs) Handles ForegroundColorContextMenuItem.Click
+    Private Sub ChangeForegroundColor(sender As Object, e As EventArgs) Handles ForegroundColorContextMenuItem.Click, ForegroundColorToolStripMenuItem.Click
 
         Dim result As DialogResult = ColorDialog.ShowDialog()
 
         If result.ToString = "OK" Then
 
-            ForeGroundColor(ColorDialog.Color)
+            ForegroundColor(ColorDialog.Color)
             'Else
             '    MsgBox(result.ToString)
             '    MsgBox(ColorDialog.Color.ToString)
@@ -162,23 +198,23 @@ Public Class GraphicExamplesForm
         End If
     End Sub
 
-    Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorContextMenuItem.Click, BackgroundColorToolStripMenuItem.Click, BackgroundColorToolStripMenuItem.Click
+    'Private Sub ChangeBackgroundColor(sender As Object, e As EventArgs) Handles BackgroundColorContextMenuItem.Click, BackgroundColorToolStripMenuItem.Click
 
 
-        Dim result As DialogResult = ColorDialog.ShowDialog()
+    '    Dim result As DialogResult = ColorDialog.ShowDialog()
 
-        If result.ToString = "OK" Then
+    '    If result.ToString = "OK" Then
 
-            BackgroundColor(ColorDialog.Color)
-            'Else
-            '    MsgBox(result.ToString)
-            '    MsgBox(ColorDialog.Color.ToString)
+    '        BackgroundColor(ColorDialog.Color)
+    '        'Else
+    '        '    MsgBox(result.ToString)
+    '        '    MsgBox(ColorDialog.Color.ToString)
 
-        End If
-    End Sub
+    '    End If
+    'End Sub
     Private Sub AboutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutToolStripMenuItem.Click
         Me.Hide()
-        AboutForm.Show()
+        HelpForm.Show()
     End Sub
 
     Private Sub GraphicExamplesForm_activated(sender As Object, e As EventArgs) Handles Me.Activated
@@ -198,6 +234,7 @@ Public Class GraphicExamplesForm
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click
         DrawingPictureBox.Refresh()
         DrawSinWave()
+        drawCosWave()
     End Sub
 
     Private Sub ClearContextMenuItem_Click(sender As Object, e As EventArgs) Handles ClearContextMenuItem.Click
@@ -215,5 +252,17 @@ Public Class GraphicExamplesForm
             fudge *= -1
         Next
         DrawingPictureBox.Refresh()
+    End Sub
+
+    Private Sub ForegroundColorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ForegroundColorToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub WidthToolStripMenuItem_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub ExitToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem1.Click, ExitToolStripMenuItem.Click
+        Me.Close()
     End Sub
 End Class

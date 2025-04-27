@@ -144,6 +144,26 @@ Public Class GraphicExamplesForm
 
     End Sub
 
+    Sub Graticule()
+        Dim g As Graphics = DrawingPictureBox.CreateGraphics
+        Dim pen As New Pen(Color.Black)
+        Dim stepX As Integer = DrawingPictureBox.Width \ 10
+        Dim stepY As Integer = DrawingPictureBox.Height \ 10
+
+        ' Draw vertical lines
+        For x As Integer = 0 To DrawingPictureBox.Width Step stepX
+            g.DrawLine(pen, x, 0, x, DrawingPictureBox.Height)
+        Next
+
+        ' Draw horizontal lines
+        For y As Integer = 0 To DrawingPictureBox.Height Step stepY
+            g.DrawLine(pen, 0, y, DrawingPictureBox.Width, y)
+        Next
+
+        g.Dispose()
+    End Sub
+
+
     Sub DrawTanWave()
         Dim g As Graphics = DrawingPictureBox.CreateGraphics
         Dim pen As New Pen(Color.Blue)
@@ -264,6 +284,7 @@ Public Class GraphicExamplesForm
 
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click, DrawWaveformsToolStripMenuItem.Click
         DrawingPictureBox.Refresh()
+        Graticule()
         DrawSinWave()
         drawCosWave()
         DrawTanWave()

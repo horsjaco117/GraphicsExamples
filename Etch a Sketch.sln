@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35728.132 d17.12
+VisualStudioVersion = 17.12.35728.132
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GraphicsExamples", "GraphicsExamples\GraphicsExamples.vbproj", "{1834428D-6F0C-4AD4-A887-5D3CE023C936}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Etch a Sketch", "GraphicsExamples\Etch a Sketch.vbproj", "{1834428D-6F0C-4AD4-A887-5D3CE023C936}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

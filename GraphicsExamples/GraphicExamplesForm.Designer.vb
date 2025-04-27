@@ -42,8 +42,8 @@ Partial Class GraphicExamplesForm
         Me.DrawingPictureBox = New System.Windows.Forms.PictureBox()
         Me.DrawWaveButton = New System.Windows.Forms.Button()
         Me.ClearButton = New System.Windows.Forms.Button()
-        Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.ColorButton = New System.Windows.Forms.Button()
+        Me.ButtonGroupBox = New System.Windows.Forms.GroupBox()
         Me.TopMenuStrip.SuspendLayout()
         Me.MainContextMenuStrip.SuspendLayout()
         CType(Me.DrawingPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,23 +170,33 @@ Partial Class GraphicExamplesForm
         'DrawWaveButton
         '
         Me.DrawWaveButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DrawWaveButton.Location = New System.Drawing.Point(725, 25)
+        Me.DrawWaveButton.Location = New System.Drawing.Point(714, 25)
         Me.DrawWaveButton.Name = "DrawWaveButton"
         Me.DrawWaveButton.Size = New System.Drawing.Size(201, 152)
-        Me.DrawWaveButton.TabIndex = 0
+        Me.DrawWaveButton.TabIndex = 2
         Me.DrawWaveButton.Text = "&Wave"
         Me.ToolTip1.SetToolTip(Me.DrawWaveButton, "Draws various waves on the screen." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Shortcut Button: Enter" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.DrawWaveButton.UseVisualStyleBackColor = True
         '
         'ClearButton
         '
-        Me.ClearButton.Location = New System.Drawing.Point(512, 25)
+        Me.ClearButton.Location = New System.Drawing.Point(522, 25)
         Me.ClearButton.Name = "ClearButton"
         Me.ClearButton.Size = New System.Drawing.Size(186, 152)
         Me.ClearButton.TabIndex = 1
         Me.ClearButton.Text = "Clear"
         Me.ToolTip1.SetToolTip(Me.ClearButton, "Clears the form. " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Shortcut Button: ESC" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.ClearButton.UseVisualStyleBackColor = True
+        '
+        'ColorButton
+        '
+        Me.ColorButton.Location = New System.Drawing.Point(346, 25)
+        Me.ColorButton.Name = "ColorButton"
+        Me.ColorButton.Size = New System.Drawing.Size(170, 152)
+        Me.ColorButton.TabIndex = 0
+        Me.ColorButton.Text = "Color"
+        Me.ToolTip1.SetToolTip(Me.ColorButton, "Choose your color!")
+        Me.ColorButton.UseVisualStyleBackColor = True
         '
         'ButtonGroupBox
         '
@@ -200,16 +210,6 @@ Partial Class GraphicExamplesForm
         Me.ButtonGroupBox.TabIndex = 3
         Me.ButtonGroupBox.TabStop = False
         Me.ButtonGroupBox.Text = "GroupBox1"
-        '
-        'ColorButton
-        '
-        Me.ColorButton.Location = New System.Drawing.Point(336, 25)
-        Me.ColorButton.Name = "ColorButton"
-        Me.ColorButton.Size = New System.Drawing.Size(170, 152)
-        Me.ColorButton.TabIndex = 2
-        Me.ColorButton.Text = "Color"
-        Me.ToolTip1.SetToolTip(Me.ColorButton, "Choose your color!")
-        Me.ColorButton.UseVisualStyleBackColor = True
         '
         'GraphicExamplesForm
         '

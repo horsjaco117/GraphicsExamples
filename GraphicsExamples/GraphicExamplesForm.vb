@@ -10,21 +10,6 @@ Imports System.Media
 Imports System.Threading.Thread
 Imports System.Runtime.CompilerServices
 
-'TODO
-' [ ] Add funcionality for all context menu items
-'   [ ] Background color
-'   [ ] pen width as drop down or text input with max width defined
-'   [ ] font
-' [ ] match functionality between context menu and top menu
-' [ ] add tool tip on picture box
-' [ ] plot sine wave
-' [ ] Add erase mode
-' [ ] Draw shape tool
-' [ ] add about form
-' [x] add splash screen
-' [ ] 
-
-
 Public Class GraphicExamplesForm
     Function ForegroundColor(Optional newColor As Color = Nothing) As Color
         Static _foreColor As Color = Color.Black

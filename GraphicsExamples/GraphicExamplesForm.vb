@@ -83,7 +83,8 @@ Public Class GraphicExamplesForm
 
         'pen.Color = ForeGroundColor(Color.Lime)
         For x = 0 To DrawingPictureBox.Width
-            newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + yOffset
+            ' newY = CInt(ymax * Math.Sin((Math.PI / 180) * (x * 1))) + yOffset
+            newY = CInt(ymax * Math.Sin((x / DrawingPictureBox.Width) * 2 * Math.PI)) + yOffset
 
             g.DrawLine(pen, oldX, oldY, x, newY)
             oldX = x
@@ -118,7 +119,10 @@ Public Class GraphicExamplesForm
         oldy = yOffset
         ymax *= -1
         For x = 0 To DrawingPictureBox.Width
-            newY = CInt(ymax * Math.Cos((Math.PI / 180) * (x * 1))) + yOffset
+            ' newY = CInt(ymax * Math.Cos((Math.PI / 180) * (x * 1))) + yOffset
+            ' newY = CInt(ymax * Math.Sin((x / DrawingPictureBox.Width) * 2 * Math.PI)) + yOffset
+            newY = CInt(ymax * Math.Cos((x / DrawingPictureBox.Width) * 2 * Math.PI)) + yOffset
+
             ' newY += DrawingPictureBox.Height \ 4
             g.DrawLine(Pen, oldX, oldY, x, newY)
             oldX = x
@@ -153,7 +157,10 @@ Public Class GraphicExamplesForm
         For x = 0 To DrawingPictureBox.Width
             If Math.Abs((x * degreesPerPoint) Mod 90) <> 0 Then
                 ' Dynamically adjust the tangent calculation based on width
-                newY = CInt(yOffset + (ymax * Math.Tan((Math.PI / 180) * (x * degreesPerPoint))))
+                ' newY = CInt(yOffset + (ymax * Math.Tan((Math.PI / 180) * (x * degreesPerPoint))))
+                newY = CInt(ymax * Math.Tan((x / DrawingPictureBox.Width) * 2 * Math.PI)) + yOffset
+
+
                 g.DrawLine(pen, oldX, oldy, x, newY)
                 oldX = x
                 oldy = newY
@@ -257,8 +264,8 @@ Public Class GraphicExamplesForm
 
     Private Sub DrawWaveButton_Click(sender As Object, e As EventArgs) Handles DrawWaveButton.Click, DrawWaveformsToolStripMenuItem.Click
         DrawingPictureBox.Refresh()
-        ' DrawSinWave()
-        'drawCosWave()
+        DrawSinWave()
+        drawCosWave()
         DrawTanWave()
     End Sub
 

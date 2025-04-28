@@ -86,12 +86,14 @@
     <Compile Include="SplashForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Etch a Sketch.vb">
+    <Compile Include="..\..\Etch a Sketch.vb">
       <SubType>Form</SubType>
+      <Link>Etch a Sketch.vb</Link>
     </Compile>
-    <Compile Include="Etch a Sketch.Designer.vb">
+    <Compile Include="..\..\Etch a Sketch.Designer.vb">
       <DependentUpon>Etch a Sketch.vb</DependentUpon>
       <SubType>Form</SubType>
+      <Link>Etch a Sketch.Designer.vb</Link>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -123,8 +125,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Etch a Sketch.resx">
+    <EmbeddedResource Include="..\..\Etch a Sketch.resx">
       <DependentUpon>Etch a Sketch.vb</DependentUpon>
+      <Link>Etch a Sketch.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpForm.resx">
       <DependentUpon>HelpForm.vb</DependentUpon>
